@@ -1,0 +1,24 @@
+.container{
+    border: 2px solid black;
+}
+
+.row {
+    height: 100px;
+    text-align: center;
+}
+
+#game{
+    height: 400px;
+}
+
+
+#title{
+    font-size: 36px;
+    text-align: center;
+}
+
+.start-btn{
+    width: 400px;
+    height: 40px;
+    font-size: 24px;
+}
