@@ -18,6 +18,9 @@ var questionTwo = {
     option4: "one"
 }
 
+// starting time for each question
+var startTime = 90;
+
 
 // ------------------------FUNCTIONS-----------------------//
 
