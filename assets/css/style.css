@@ -4,7 +4,7 @@
 }
 
 .row {
-    height: 100px;
+    height: 300px;
     text-align: center;
 }
 
@@ -16,6 +16,7 @@
 #title{
     font-size: 36px;
     text-align: center;
+    height: 300px;
 }
 
 .start-btn{

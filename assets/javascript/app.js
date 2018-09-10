@@ -9,7 +9,7 @@ var questionOne = {
     option4: "hearts"
 }
 
-//question Two object
+//questionTwo object
 var questionTwo = {
     question: "How many of these are left?",
     option1: "four",
@@ -18,16 +18,42 @@ var questionTwo = {
     option4: "one"
 }
 
+//questionThree object
+
+var questionTwo = {
+    question: "What's the tallest mountain in WA",
+    option1: "Rainier",
+    option2: "Shuksan",
+    option3: "Denali",
+    option4: "Shasta"
+}
+
 // starting time for each question
 var startTime = 90;
+
+ //  Variable that will hold our interval ID when we execute
+//  the "run" function
+var intervalId;
 
 
 // ------------------------FUNCTIONS-----------------------//
 
 // init()
-// page loads, with start button in middle
 
-// when start button is clicked -->
+function init(){
+// page loads, with start button in middle
+    // when start button is clicked -->
+    $(".start-btn").on("click", start);
+}
+
+function start(){
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+}
+
+function decrement(){
+    
+}
 // start timer countdown from 90 seconds
 // randomly select 5 questions
 // create and append new div for questionOne.question 
