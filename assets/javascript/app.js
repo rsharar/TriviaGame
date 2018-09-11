@@ -43,16 +43,34 @@ var intervalId;
 function init(){
 // page loads, with start button in middle
     // when start button is clicked -->
-    $(".start-btn").on("click", start);
+    $(".start-btn").on("click", function(){
+        console.log("button-clicked");
+        $("#question-box").empty();
+        // start);
+})
 }
-
 function start(){
+    $("#question-box").
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
+    
 }
 
 function decrement(){
-    
+    number--;
+    // need push number decrement to HTML
+
+    // once num hits zero...
+    if (number === 0){
+        alert("Time's up!");
+    }
+
+}
+
+//The stop function
+function stop() {
+    //clears intervalId
+    clearInterval(intervalId);
 }
 // start timer countdown from 90 seconds
 // randomly select 5 questions
@@ -67,3 +85,5 @@ function decrement(){
 
 
 // ------------------------EVENT LISTENERES-----------------------//
+
+init();
