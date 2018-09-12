@@ -2,34 +2,55 @@
 
 //questionOne object
 var questionOne = {
-    question: "What is the name of the game?",
-    option1: "trivia",
-    option2: "basketball",
-    option3: "uno",
-    option4: "hearts"
+    question: "What player scored the most points in one game?",
+    option1: "Michael Jordan",
+    option2: "Wilt Chamberlain",
+    option3: "LeBron James",
+    option4: "Kobe Bryant",
+    correctAnswer: "Wilt Chamerlain"
 }
 
 //questionTwo object
 var questionTwo = {
-    question: "How many of these are left?",
-    option1: "four",
-    option2: "three",
-    option3: "two",
-    option4: "one"
+    question: "What player has the most career assists?",
+    option1: "Steve Nash",
+    option2: "Gary Payton",
+    option3: "Chris Paul",
+    option4: "John Stockton",
+    correctAnswer: "John Stockton"
 }
 
 //questionThree object
 
 var questionThree = {
-    question: "What's the tallest mountain in WA?",
-    option1: "Rainier",
-    option2: "Shuksan",
-    option3: "Denali",
-    option4: "Shasta"
+    question: "What player has the highest career 3-pt FG percentage?",
+    option1: "Ray Allen",
+    option2: "Stephen Curry",
+    option3: "Steve Kerr",
+    option4: "Reggie Miller",
+    correctAnswer: "Steve Kerr"
+}
+
+var questionFour = {
+    question: "Who was the last player drafted by the Seattle Supersonics?",
+    option1: "Sasha Kahn",
+    option2: "Kevin Durant",
+    option3: "Russell Westbrook",
+    option4: "Carl Landry",
+    correctAnswer: "Sasha Kahn"
+}
+
+var questionFive = {
+    question: "What player won the most NBA championships in his career?",
+    option1: "Bill Russell",
+    option2: "LeBron James",
+    option3: "Larry Bird",
+    option4: "Magic Johnson",
+    correctAnswer: "Bill Russell"
 }
 
 // array to hold all question objects
-var questionsArray = [questionOne,questionTwo,questionThree];
+var questionsArray = [questionOne,questionTwo,questionThree,questionFour,questionFive];
 
 
 // starting time for each question
@@ -41,6 +62,19 @@ var intervalId;
 
 // count variable to keep track of question number
 var count = 0;
+
+// variable to store the answer selected by user
+var userAnswer;
+
+// count of correct answers
+var numCorrect = 0;
+
+// count of incorrect answers
+var numIncorrect = 0;
+
+// count of unanswered answers
+var numUnanswered = 0;
+
 
 
 // ------------------------FUNCTIONS-----------------------//
@@ -94,31 +128,61 @@ function stopTimer() {
 
 // function question and answers from a question object
 function createQuestion(){
+        $("#questioncounter").html("Question " + [count+1]+"/5").addClass("counter");
         $("#question").html(questionsArray[count].question).addClass("question");
-        $("#answerone").html("<input type =radio name=answerchoice value=one>" + " "+questionsArray[count].option1).addClass("answers")
-        $("#answertwo").html("<input type =radio name=answerchoice value=two>" + " "+questionsArray[count].option2).addClass("answers")
-        $("#answerthree").html("<input type =radio name=answerchoice value=three>" + " "+questionsArray[count].option3).addClass("answers")
-        $("#answerfour").html("<input type =radio name=answerchoice value=four>" + " "+questionsArray[count].option4).addClass("answers")
-        $("#submit-btn").html("<button type=button>Submit</button>").addClass("btn btn-primary")
-    }
+        $("#answerone").html(questionsArray[count].option1).addClass("answers");
+        $("#answertwo").html(questionsArray[count].option2).addClass("answers");
+        $("#answerthree").html(questionsArray[count].option3).addClass("answers");
+        $("#answerfour").html(questionsArray[count].option4).addClass("answers");
+
+    $(".answers").on("click",function(){
+        
+    })
+
+
+
+
+
+    //     $("#submit-btn").html("<button type=button>Submit</button>").addClass("btn btn-primary")
+    // }
+    
 
     // when user clicks submit button
     $("#submit-btn").on("click", function(){
         // if all questions have been displayed
         if (count == questionsArray.length - 1){
             //empty the timer and question-box divs
+            stopTimer();
             $("#timer").empty();
             $(".question-box").empty();
         }
         // otherwise increase value of count to display next question
-        else{count++
-        createQuestion();
+        else{
+            checkAnswer();
+            count++
+            createQuestion();
         }
 
     })
 
 
+//function to check if answer is correct
+function checkAnswer(){
+    userAnswer = $('input[name=answerchoice]:checked').val();
+    console.log(userAnswer);
+    console.log(questionsArray[count].correctAnswer);
 
+    // if (userAnswer === questionsArray[count].correctAnswer){
+    //     numCorrect++;
+    //     console.log(numCorrect);
+    //     }
+    // else if (userAnswer !== questionsArray[count].correctAnswer)
+    //     numIncorrect++;
+    //     console.log(numIncorrect);
+
+
+    
+}
 
 // start timer countdown from 90 seconds - DONE
 // randomly select 5 questions
