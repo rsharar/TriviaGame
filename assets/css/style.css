@@ -4,16 +4,20 @@
 }
 
 .row {
-    height: 300px;
+    height: 200px;
     text-align: center;
 }
 
 #game{
-    height:600px;
+    height:400px;
 }
 
 #question-box{
-    
+
+}
+
+.timer{
+    color: darkgrey;
 }
 
 .col-md-2{

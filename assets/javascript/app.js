@@ -29,7 +29,7 @@ var questionTwo = {
 }
 
 // starting time for each question
-var startTime = 90;
+var number = 90;
 
  //  Variable that will hold our interval ID when we execute
 //  the "run" function
@@ -38,41 +38,69 @@ var intervalId;
 
 // ------------------------FUNCTIONS-----------------------//
 
-// init()
+// initialize function to start the game
 
 function init(){
 // page loads, with start button in middle
     // when start button is clicked -->
     $(".start-btn").on("click", function(){
-        console.log("button-clicked");
         $("#question-box").empty();
-        // start);
+        startTimer();
+        createQuestion();
+        createAnswers();
 })
 }
-function start(){
-    $("#question-box").
+
+// function to start timer downtown with increment every 1 sec
+function startTimer(){
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
-    
 }
 
+// function to decrease 
 function decrement(){
+    //decrease the value of number by 1
     number--;
-    // need push number decrement to HTML
 
-    // once num hits zero...
+    // need push number decrement to HTML and add HTML to stylize text
+    $("#timer").html("<h1>"+"Only " + number + " seconds left"+ "</h1>").addClass("timer");
+
+    // once number hits zero...
     if (number === 0){
+
+        //end the timer
+        stopTimer();
+
+        // Alert user time is up
         alert("Time's up!");
     }
 
 }
 
 //The stop function
-function stop() {
+function stopTimer() {
+
     //clears intervalId
     clearInterval(intervalId);
+    //empties the timer div to clear the page
+    $("#timer").empty();
 }
-// start timer countdown from 90 seconds
+
+// function question and answers from a question object
+function createQuestion(){
+    console.log(questionOne.question);
+    $(".question").html(questionOne.question);
+    $(".question").append("<div>")
+
+
+}
+
+//function to generate question and answers
+function createAnswers(){
+    $
+}
+
+// start timer countdown from 90 seconds - DONE
 // randomly select 5 questions
 // create and append new div for questionOne.question 
 // create and append all answer choices as MC options in one div
