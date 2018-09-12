@@ -1,6 +1,6 @@
 .container-fluid{
     /* background-image: url(../images/clouds.jpg); */
-    background-color: black;
+    background-color: white;
     background-size: 100%;
 }
 
@@ -13,12 +13,13 @@
     height:400px;
 }
 
-/* #question-box{
+/* #game-box{
 
 } */
 
 .timer{
     color: darkgrey;
+    height: 40px;
 }
 
 .col-md-2{
@@ -37,10 +38,13 @@
 }
 
 .question{
-    color: white;
-    font-size: 18px;
+    color: black;
+    font-size: 24px;
+    padding-top: 10px;
 }
 .answers{
-    color: white;
-    font-size:14px;
+    color: black;
+    font-size:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

@@ -20,8 +20,8 @@ var questionTwo = {
 
 //questionThree object
 
-var questionTwo = {
-    question: "What's the tallest mountain in WA",
+var questionThree = {
+    question: "What's the tallest mountain in WA?",
     option1: "Rainier",
     option2: "Shuksan",
     option3: "Denali",
@@ -29,7 +29,7 @@ var questionTwo = {
 }
 
 // array to hold all question objects
-var questionsArray = [questionOne,questionTwo]
+var questionsArray = [questionOne,questionTwo,questionThree];
 
 
 // starting time for each question
@@ -38,6 +38,9 @@ var number = 90;
  //  Variable that will hold our interval ID when we execute
 //  the "run" function
 var intervalId;
+
+// count variable to keep track of question number
+var count = 0;
 
 
 // ------------------------FUNCTIONS-----------------------//
@@ -48,7 +51,7 @@ function init(){
 // page loads, with start button in middle
     // when start button is clicked -->
     $(".start-btn").on("click", function(){
-        $("#question-box").empty();
+        $("#game-box").empty();
         startTimer();
         createQuestion();
 })
@@ -91,30 +94,49 @@ function stopTimer() {
 
 // function question and answers from a question object
 function createQuestion(){
-    console.log(questionOne.question);
-    $(".question").html(questionOne.question).addClass("question");
-    $("#answerone").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option1).addClass("answers")
-    $("#answertwo").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option2).addClass("answers")
-    $("#answerthree").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option3).addClass("answers")
-    $("#answerfour").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option4).addClass("answers")
-}
+        $("#question").html(questionsArray[count].question).addClass("question");
+        $("#answerone").html("<input type =radio name=answerchoice value=one>" + " "+questionsArray[count].option1).addClass("answers")
+        $("#answertwo").html("<input type =radio name=answerchoice value=two>" + " "+questionsArray[count].option2).addClass("answers")
+        $("#answerthree").html("<input type =radio name=answerchoice value=three>" + " "+questionsArray[count].option3).addClass("answers")
+        $("#answerfour").html("<input type =radio name=answerchoice value=four>" + " "+questionsArray[count].option4).addClass("answers")
+        $("#submit-btn").html("<button type=button>Submit</button>").addClass("btn btn-primary")
+    }
 
-//function to generate question and answers
-function createAnswers(){
-}
+    // when user clicks submit button
+    $("#submit-btn").on("click", function(){
+        // if all questions have been displayed
+        if (count == questionsArray.length - 1){
+            //empty the timer and question-box divs
+            $("#timer").empty();
+            $(".question-box").empty();
+        }
+        // otherwise increase value of count to display next question
+        else{count++
+        createQuestion();
+        }
+
+    })
+
+
+
 
 // start timer countdown from 90 seconds - DONE
 // randomly select 5 questions
-// create and append new div for questionOne.question 
-// create and append all answer choices as MC options in one div
-// create and append div with 'Submit' button below all questions
+// create and append new div for questionOne.question - DONE
+// create and append all answer choices as MC options in one div - DONE
+// create and append div with 'Submit' button below all questions - DONE
 // repeat for all questions
 // if timer = 0 or user clicks submit
-// display questions correct, incorrect, unanswered
+// count number of answers the user got correct
+    // if user selects option on click == question.correctAnswer (count as correct)
+    // else if user selects option on click != question.correctAnswer (count as incorrect)
+    // else if user does not select an answer choice (count as unanswered)
 // add 'play again' button
 // DO NOT reload the page, but rather manipulate DOM to reload 5 random new questions
 
 
 // ------------------------EVENT LISTENERES-----------------------//
 
-init();
+$(document).ready(function(){
+    init();
+});
