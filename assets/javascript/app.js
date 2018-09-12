@@ -28,6 +28,10 @@ var questionTwo = {
     option4: "Shasta"
 }
 
+// array to hold all question objects
+var questionsArray = [questionOne,questionTwo]
+
+
 // starting time for each question
 var number = 90;
 
@@ -47,7 +51,6 @@ function init(){
         $("#question-box").empty();
         startTimer();
         createQuestion();
-        createAnswers();
 })
 }
 
@@ -89,15 +92,15 @@ function stopTimer() {
 // function question and answers from a question object
 function createQuestion(){
     console.log(questionOne.question);
-    $(".question").html(questionOne.question);
-    $(".question").append("<div>")
-
-
+    $(".question").html(questionOne.question).addClass("question");
+    $("#answerone").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option1).addClass("answers")
+    $("#answertwo").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option2).addClass("answers")
+    $("#answerthree").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option3).addClass("answers")
+    $("#answerfour").html("<input type =radio name=answerchoice value=one>" + " "+questionOne.option4).addClass("answers")
 }
 
 //function to generate question and answers
 function createAnswers(){
-    $
 }
 
 // start timer countdown from 90 seconds - DONE

@@ -1,5 +1,6 @@
 .container-fluid{
-    background-image: url(../images/clouds.jpg);
+    /* background-image: url(../images/clouds.jpg); */
+    background-color: black;
     background-size: 100%;
 }
 
@@ -12,9 +13,9 @@
     height:400px;
 }
 
-#question-box{
+/* #question-box{
 
-}
+} */
 
 .timer{
     color: darkgrey;
@@ -33,4 +34,13 @@
 .start-btn{
     font-size: 24px;
     width: 400px;
+}
+
+.question{
+    color: white;
+    font-size: 18px;
+}
+.answers{
+    color: white;
+    font-size:14px;
 }
