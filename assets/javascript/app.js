@@ -7,7 +7,7 @@ var questionOne = {
     option2: "Wilt Chamberlain",
     option3: "LeBron James",
     option4: "Kobe Bryant",
-    correctAnswer: "Wilt Chamerlain"
+    correctAnswer: "Wilt Chamberlain"
 }
 
 //questionTwo object
@@ -128,16 +128,31 @@ function stopTimer() {
 
 // function question and answers from a question object
 function createQuestion(){
-        $("#questioncounter").html("Question " + [count+1]+"/5").addClass("counter");
+        // $("#questioncounter").html("Question " + [count+1]+"/5").addClass("counter");
         $("#question").html(questionsArray[count].question).addClass("question");
         $("#answerone").html(questionsArray[count].option1).addClass("answers");
         $("#answertwo").html(questionsArray[count].option2).addClass("answers");
         $("#answerthree").html(questionsArray[count].option3).addClass("answers");
         $("#answerfour").html(questionsArray[count].option4).addClass("answers");
 
+        checkAnswer();
+}
+
+function checkAnswer(){
     $(".answers").on("click",function(){
-        
-    })
+        var userAnswer = $(this).text();
+        if(userAnswer == questionsArray[count].correctAnswer){
+            numCorrect++;
+            $("#correct").html(numCorrect);
+            console.log(count);
+        }
+        else{
+            numIncorrect++;
+            $("#incorrect").html(numIncorrect);
+            console.log(count);
+        }
+    });
+}
 
 
 
@@ -146,31 +161,29 @@ function createQuestion(){
     //     $("#submit-btn").html("<button type=button>Submit</button>").addClass("btn btn-primary")
     // }
     
-
+//<--------- OLD SUBMIT BUTTON CODE -------->
     // when user clicks submit button
-    $("#submit-btn").on("click", function(){
-        // if all questions have been displayed
-        if (count == questionsArray.length - 1){
-            //empty the timer and question-box divs
-            stopTimer();
-            $("#timer").empty();
-            $(".question-box").empty();
-        }
-        // otherwise increase value of count to display next question
-        else{
-            checkAnswer();
-            count++
-            createQuestion();
-        }
+    // $("#submit-btn").on("click", function(){
+    //     // if all questions have been displayed
+    //     if (count == questionsArray.length - 1){
+    //         //empty the timer and question-box divs
+    //         stopTimer();
+    //         $("#timer").empty();
+    //         $(".question-box").empty();
+    //     }
+    //     // otherwise increase value of count to display next question
+    //     else{
+    //         checkAnswer();
+    //         count++
+    //         createQuestion();
+    //     }
 
-    })
-
-
+    // })
 //function to check if answer is correct
-function checkAnswer(){
-    userAnswer = $('input[name=answerchoice]:checked').val();
-    console.log(userAnswer);
-    console.log(questionsArray[count].correctAnswer);
+// function checkAnswer(){
+//     userAnswer = $('input[name=answerchoice]:checked').val();
+//     console.log(userAnswer);
+//     console.log(questionsArray[count].correctAnswer);
 
     // if (userAnswer === questionsArray[count].correctAnswer){
     //     numCorrect++;
@@ -181,8 +194,6 @@ function checkAnswer(){
     //     console.log(numIncorrect);
 
 
-    
-}
 
 // start timer countdown from 90 seconds - DONE
 // randomly select 5 questions
