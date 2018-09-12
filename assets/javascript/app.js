@@ -31,6 +31,7 @@ var questionThree = {
     correctAnswer: "Steve Kerr"
 }
 
+//questionFour object
 var questionFour = {
     question: "Who was the last player drafted by the Seattle Supersonics?",
     option1: "Sasha Kahn",
@@ -40,6 +41,7 @@ var questionFour = {
     correctAnswer: "Sasha Kahn"
 }
 
+//questionFive object
 var questionFive = {
     question: "What player won the most NBA championships in his career?",
     option1: "Bill Russell",
@@ -53,7 +55,7 @@ var questionFive = {
 var questionsArray = [questionOne,questionTwo,questionThree,questionFour,questionFive];
 
 
-// starting time for each question
+// starting time for all questions
 var number = 90;
 
  //  Variable that will hold our interval ID when we execute
@@ -103,7 +105,7 @@ function decrement(){
     number--;
 
     // need push number decrement to HTML and add HTML to stylize text
-    $("#timer").html("<h1>"+"Only " + number + " seconds left"+ "</h1>").addClass("timer");
+    $("#timer").html("<div>"+"Only " + number + " seconds left"+ "</div>").addClass("timer");
 
     // once number hits zero...
     if (number === 0){
@@ -157,11 +159,11 @@ function checkAnswer(){
 
 
 
+//<--------- OLD SUBMIT BUTTON CODE -------->
 
     //     $("#submit-btn").html("<button type=button>Submit</button>").addClass("btn btn-primary")
     // }
     
-//<--------- OLD SUBMIT BUTTON CODE -------->
     // when user clicks submit button
     // $("#submit-btn").on("click", function(){
     //     // if all questions have been displayed
@@ -195,11 +197,7 @@ function checkAnswer(){
 
 
 
-// start timer countdown from 90 seconds - DONE
-// randomly select 5 questions
-// create and append new div for questionOne.question - DONE
-// create and append all answer choices as MC options in one div - DONE
-// create and append div with 'Submit' button below all questions - DONE
+TODO: 
 // repeat for all questions
 // if timer = 0 or user clicks submit
 // count number of answers the user got correct

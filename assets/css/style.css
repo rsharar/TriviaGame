@@ -1,6 +1,6 @@
 .container-fluid{
-    /* background-image: url(../images/clouds.jpg); */
-    background-color: white;
+    background-image: url(../images/wood.jpg);
+    /* background-color: white; */
     background-size: 100%;
 }
 
@@ -13,18 +13,14 @@
     height:400px;
 }
 
-/* #game-box{
-
-} */
-
 .timer{
-    color: darkgrey;
-    height: 40px;
+    color: white;
+    font-size:. 24px;
 }
 
-.col-md-2{
+/* .col-md-2{
     border: 2px solid white;
-}
+} */
 
 #title{
     font-size: 36px;
@@ -42,21 +38,42 @@
 .start-btn{
     font-size: 24px;
     width: 400px;
+    background-color: darkblue;
+    border-color: darkblue;
+}
+
+.start-btn:hover{
+    background-color: green;
+    border-color: green;
 }
 
 .question{
-    color: black;
+    color: white;
     font-size: 24px;
     padding-top: 10px;
 }
 .answers{
-    color: black;
+    color: white;
     font-size:20px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
+
+.tracker{
+    font-size: 28px;
+    color: white;
+}
+
+#correct{
+    text-align: center;
+}
+
+#incorrect{
+    text-align: center;
+}
+
 .answers:hover{
-    border: 2px solid red;
-    background-color: lightcyan;
+    border: 0.1px solid white;
+    background-color: #2b2b2b;
 }
