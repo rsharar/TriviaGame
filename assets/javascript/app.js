@@ -123,6 +123,7 @@ function decrement(){
 
 //The stop function
 function stopTimer() {
+
     //clears intervalId
     clearInterval(intervalId);
     //empties the timer div to clear the page
