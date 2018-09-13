@@ -2,7 +2,7 @@
 
 //questionOne object
 var questionOne = {
-    question: "What player scored the most points in one game?",
+    question: "Who holds the record for most points scored in a single game?",
     option1: "Michael Jordan",
     option2: "Wilt Chamberlain",
     option3: "LeBron James",
@@ -65,6 +65,9 @@ var intervalId;
 // count variable to keep track of question number
 var count = 0;
 
+// variable to indicate user progress in game by question
+var questionNum = 0;
+
 // variable to store the answer selected by user
 var userAnswer;
 
@@ -116,12 +119,10 @@ function decrement(){
         // Alert user time is up
         alert("Time's up!");
     }
-
 }
 
 //The stop function
 function stopTimer() {
-
     //clears intervalId
     clearInterval(intervalId);
     //empties the timer div to clear the page
@@ -130,28 +131,41 @@ function stopTimer() {
 
 // function question and answers from a question object
 function createQuestion(){
-        // $("#questioncounter").html("Question " + [count+1]+"/5").addClass("counter");
+        questionNum++;
+        if (questionNum === questionsArray.length){
+            stopTimer();
+            $(".answers").empty();
+            $("#questioncounter").empty();
+            $("#question").empty();
+        }
+        else{
+        $("#questioncounter").html("Question " + [questionNum]+"/5").addClass("counter");
         $("#question").html(questionsArray[count].question).addClass("question");
         $("#answerone").html(questionsArray[count].option1).addClass("answers");
         $("#answertwo").html(questionsArray[count].option2).addClass("answers");
         $("#answerthree").html(questionsArray[count].option3).addClass("answers");
         $("#answerfour").html(questionsArray[count].option4).addClass("answers");
-
         checkAnswer();
+        }
 }
 
+// function to check if answer chosen by user is the correct answer
 function checkAnswer(){
     $(".answers").on("click",function(){
+        //store the text of the div user clicks in variable userAnswer
         var userAnswer = $(this).text();
+        //check if userAnswer is equal to correctAnswer
         if(userAnswer == questionsArray[count].correctAnswer){
             numCorrect++;
-            $("#correct").html(numCorrect);
-            console.log(count);
+            console.log("numCorrect: " + numCorrect);
+            count++;
+            createQuestion();
         }
         else{
             numIncorrect++;
-            $("#incorrect").html(numIncorrect);
-            console.log(count);
+            console.log("numIncorrect: " + numIncorrect);
+            count++;
+            createQuestion();
         }
     });
 }
