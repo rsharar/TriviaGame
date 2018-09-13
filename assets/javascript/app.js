@@ -85,7 +85,6 @@ var numUnanswered = 0;
 // ------------------------FUNCTIONS-----------------------//
 
 // initialize function to start the game
-
 function init(){
 // page loads, with start button in middle
     // when start button is clicked -->
@@ -93,6 +92,7 @@ function init(){
         $("#game-box").empty();
         startTimer();
         createQuestion();
+        checkAnswer();
 })
 }
 
@@ -106,16 +106,12 @@ function startTimer(){
 function decrement(){
     //decrease the value of number by 1
     number--;
-
     // need push number decrement to HTML and add HTML to stylize text
     $("#timer").html("<div>"+"Only " + number + " seconds left"+ "</div>").addClass("timer");
-
     // once number hits zero...
     if (number === 0){
-
         //end the timer
         stopTimer();
-
         // Alert user time is up
         alert("Time's up!");
     }
@@ -123,7 +119,6 @@ function decrement(){
 
 //The stop function
 function stopTimer() {
-
     //clears intervalId
     clearInterval(intervalId);
     //empties the timer div to clear the page
@@ -133,20 +128,19 @@ function stopTimer() {
 // function question and answers from a question object
 function createQuestion(){
         questionNum++;
-        if (questionNum === questionsArray.length){
-            stopTimer();
+        if (questionNum === questionsArray.length +1){
+            $("#timer").empty();
             $(".answers").empty();
             $("#questioncounter").empty();
             $("#question").empty();
         }
         else{
-        $("#questioncounter").html("Question " + [questionNum]+"/5").addClass("counter");
-        $("#question").html(questionsArray[count].question).addClass("question");
-        $("#answerone").html(questionsArray[count].option1).addClass("answers");
-        $("#answertwo").html(questionsArray[count].option2).addClass("answers");
-        $("#answerthree").html(questionsArray[count].option3).addClass("answers");
-        $("#answerfour").html(questionsArray[count].option4).addClass("answers");
-        checkAnswer();
+            $("#questioncounter").html("You're on question " + [questionNum]+" of 5").addClass("counter");
+            $("#question").html(questionsArray[count].question).addClass("question");
+            $("#answerone").html(questionsArray[count].option1).addClass("answers");
+            $("#answertwo").html(questionsArray[count].option2).addClass("answers");
+            $("#answerthree").html(questionsArray[count].option3).addClass("answers");
+            $("#answerfour").html(questionsArray[count].option4).addClass("answers");
         }
 }
 
@@ -159,18 +153,15 @@ function checkAnswer(){
         if(userAnswer == questionsArray[count].correctAnswer){
             numCorrect++;
             console.log("numCorrect: " + numCorrect);
-            count++;
-            createQuestion();
         }
         else{
             numIncorrect++;
             console.log("numIncorrect: " + numIncorrect);
-            count++;
-            createQuestion();
         }
+        count++
+        createQuestion();
     });
 }
-
 
 
 
