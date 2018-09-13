@@ -133,6 +133,8 @@ function createQuestion(){
             $(".answers").empty();
             $("#questioncounter").empty();
             $("#question").empty();
+            $("#correct").html(numCorrect);
+            $("#incorrect").html(numIncorrect);
         }
         else{
             $("#questioncounter").html("You're on question " + [questionNum]+" of 5").addClass("counter");
