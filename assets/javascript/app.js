@@ -128,6 +128,8 @@ function stopTimer() {
     $("#correct").html(numCorrect);
     $("#incorrect").html(numIncorrect);
     $("#unanswered").html(numUnanswered);
+
+    correctAnswers();
     
     //create the 'play again' button
     $("#questioncounter").html("<button id='playagain' class='btn btn-primary start-btn' type='submit'>Ready to play again?</button>")
@@ -162,13 +164,7 @@ function createQuestion(){
                 init();
             })
 
-            //add the correct answers
-            $("#question").html("The correct answers are: ").addClass('finalanswers');
-            $("#correctanswerone").html("1: " + questionOne.question + " " + questionOne.correctAnswer).addClass('finalanswers');
-            $("#correctanswertwo").html("2: " + questionTwo.question +" " +questionTwo.correctAnswer).addClass('finalanswers');
-            $("#correctanswerthree").html("3: " + questionThree.question + " " +questionThree.correctAnswer).addClass('finalanswers');
-            $("#correctanswerfour").html("4: " + questionFour.question + " " +questionFour.correctAnswer).addClass('finalanswers');
-            $("#correctanswerfive").html("5: " + questionFive.question +" " +questionFive.correctAnswer).addClass('finalanswers');
+            correctAnswers();
 
             
         }
@@ -206,6 +202,16 @@ function checkAnswer(){
         count++
         createQuestion();
     });
+}
+
+function correctAnswers(){
+    //add the correct answers
+    $("#question").html("The correct answers are: ").addClass('finalanswers');
+    $("#correctanswerone").html("1: " + questionOne.question + " " + questionOne.correctAnswer).addClass('finalanswers');
+    $("#correctanswertwo").html("2: " + questionTwo.question +" " +questionTwo.correctAnswer).addClass('finalanswers');
+    $("#correctanswerthree").html("3: " + questionThree.question + " " +questionThree.correctAnswer).addClass('finalanswers');
+    $("#correctanswerfour").html("4: " + questionFour.question + " " +questionFour.correctAnswer).addClass('finalanswers');
+    $("#correctanswerfive").html("5: " + questionFive.question +" " +questionFive.correctAnswer).addClass('finalanswers');
 }
 
 
