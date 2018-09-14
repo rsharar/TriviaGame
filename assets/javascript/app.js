@@ -128,15 +128,20 @@ function stopTimer() {
 // function question and answers from a question object
 function createQuestion(){
         questionNum++;
+        // check if the user has answered the last question or not and if they have
+
         if (questionNum === questionsArray.length +1){
+            //stop the timer
             stopTimer();
-            $("#timer").empty();
-            $(".answers").empty();
-            $("#questioncounter").empty();
-            // $("#question").empty();
+
+            //populate the number of correct and incorrect answers
             $("#correct").html(numCorrect);
             $("#incorrect").html(numIncorrect);
-            $("#questioncounter").html("<button class='btn btn-primary start-btn' type='submit'>Play Again</button>")
+
+            //create the 'play again' button
+            $("#questioncounter").html("<button class='btn btn-primary start-btn' type='submit'>Ready to play again?</button>")
+
+            //add the correct answers
             $("#question").html("The correct answers are: ").addClass('finalanswers');
             $("#answerone").html("1: "+questionOne.correctAnswer).addClass('finalanswers');
             $("#answertwo").html("2: "+questionTwo.correctAnswer).addClass('finalanswers');
@@ -145,8 +150,11 @@ function createQuestion(){
             $("#answerfive").html("5: "+questionFive.correctAnswer).addClass('finalanswers');
         }
         else{
+            //populate the question for each question object
             $("#questioncounter").html("You're on question " + [questionNum]+" of 5").addClass("counter");
             $("#question").html(questionsArray[count].question).addClass("question");
+
+            //populate each answer choice from the question object
             $("#answerone").html(questionsArray[count].option1).addClass("answers");
             $("#answertwo").html(questionsArray[count].option2).addClass("answers");
             $("#answerthree").html(questionsArray[count].option3).addClass("answers");
@@ -168,60 +176,11 @@ function checkAnswer(){
             numIncorrect++;
             console.log("numIncorrect: " + numIncorrect);
         }
+        // increase the count variable to move to next question when createQuestion function is called
         count++
         createQuestion();
     });
 }
-
-
-
-//<--------- OLD SUBMIT BUTTON CODE -------->
-
-    //     $("#submit-btn").html("<button type=button>Submit</button>").addClass("btn btn-primary")
-    // }
-    
-    // when user clicks submit button
-    // $("#submit-btn").on("click", function(){
-    //     // if all questions have been displayed
-    //     if (count == questionsArray.length - 1){
-    //         //empty the timer and question-box divs
-    //         stopTimer();
-    //         $("#timer").empty();
-    //         $(".question-box").empty();
-    //     }
-    //     // otherwise increase value of count to display next question
-    //     else{
-    //         checkAnswer();
-    //         count++
-    //         createQuestion();
-    //     }
-
-    // })
-//function to check if answer is correct
-// function checkAnswer(){
-//     userAnswer = $('input[name=answerchoice]:checked').val();
-//     console.log(userAnswer);
-//     console.log(questionsArray[count].correctAnswer);
-
-    // if (userAnswer === questionsArray[count].correctAnswer){
-    //     numCorrect++;
-    //     console.log(numCorrect);
-    //     }
-    // else if (userAnswer !== questionsArray[count].correctAnswer)
-    //     numIncorrect++;
-    //     console.log(numIncorrect);
-
-
-
-TODO: 
-// repeat for all questions
-// if timer = 0 or user clicks submit
-// count number of answers the user got correct
-    // if user selects option on click == question.correctAnswer (count as correct)
-    // else if user selects option on click != question.correctAnswer (count as incorrect)
-    // else if user does not select an answer choice (count as unanswered)
-// add 'play again' button
-// DO NOT reload the page, but rather manipulate DOM to reload 5 random new questions
 
 
 // ------------------------EVENT LISTENERES-----------------------//
