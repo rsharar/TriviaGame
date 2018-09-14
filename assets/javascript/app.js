@@ -56,7 +56,7 @@ var questionsArray = [questionOne,questionTwo,questionThree,questionFour,questio
 
 
 // starting time for all questions
-var number = 90;
+var number = 30;
 
  //  Variable that will hold our interval ID when we execute
 //  the "run" function
@@ -129,12 +129,20 @@ function stopTimer() {
 function createQuestion(){
         questionNum++;
         if (questionNum === questionsArray.length +1){
+            stopTimer();
             $("#timer").empty();
             $(".answers").empty();
             $("#questioncounter").empty();
-            $("#question").empty();
+            // $("#question").empty();
             $("#correct").html(numCorrect);
             $("#incorrect").html(numIncorrect);
+            $("#questioncounter").html("<button class='btn btn-primary start-btn' type='submit'>Play Again</button>")
+            $("#question").html("The correct answers are: ").addClass('finalanswers');
+            $("#answerone").html("1: "+questionOne.correctAnswer).addClass('finalanswers');
+            $("#answertwo").html("2: "+questionTwo.correctAnswer).addClass('finalanswers');
+            $("#answerthree").html("3: "+questionThree.correctAnswer).addClass('finalanswers');
+            $("#answerfour").html("4: "+questionFour.correctAnswer).addClass('finalanswers');
+            $("#answerfive").html("5: "+questionFive.correctAnswer).addClass('finalanswers');
         }
         else{
             $("#questioncounter").html("You're on question " + [questionNum]+" of 5").addClass("counter");

@@ -1,5 +1,9 @@
+body{
+    font-family: 'Play', sans-serif;
+}
+
 .container-fluid{
-    background-image: url(../images/wood.jpg);
+    background-image: url(../images/court.jpg);
     /* background-color: white; */
     background-size: 100%;
 }
@@ -13,11 +17,15 @@
     height:400px;
 }
 
+
 .timer{
-    color: white;
-    font-size: 24px;
+    color: darkred;
+    font-size: 48px;
 }
 
+.space{
+    height: 80px;
+}
 /* .col-md-2{
     border: 2px solid white;
 } */
@@ -26,6 +34,7 @@
     font-size: 36px;
     text-align: center;
     height: 300px;
+    color: white;
 }
 
 .counter{
@@ -39,11 +48,13 @@
 .start-btn{
     font-size: 24px;
     width: 400px;
+    background-color: #2B547E;
+    border-color: #2B547E;
 }
 
 .start-btn:hover{
-    background-color: green;
-    border-color: green;
+    background-color: darkblue;
+    border-color: darkblue;
 }
 
 .question{
@@ -57,7 +68,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
 
 .tracker{
     font-size: 28px;
@@ -75,4 +85,17 @@
 .answers:hover{
     border: 0.1px solid white;
     background-color: #2b2b2b;
+}
+
+
+.q1answer{
+    background-image: url(../images/wilt.jpeg);
+}
+
+
+.finalanswers{
+    color: white;
+    font-size:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
