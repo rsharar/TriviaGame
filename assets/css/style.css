@@ -33,7 +33,7 @@ body{
 #title{
     font-size: 36px;
     text-align: center;
-    height: 300px;
+    height: 200px;
     color: white;
 }
 
@@ -48,13 +48,13 @@ body{
 .start-btn{
     font-size: 24px;
     width: 400px;
-    background-color: #2B547E;
-    border-color: #2B547E;
+    background-color: darkblue;
+    border-color: darkblue;
 }
 
 .start-btn:hover{
-    background-color: darkblue;
-    border-color: darkblue;
+    background-color:#2B547E;
+    border-color: #2B547E;
 }
 
 .question{

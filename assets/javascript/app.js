@@ -78,7 +78,7 @@ var numCorrect = 0;
 var numIncorrect = 0;
 
 // count of unanswered answers
-var numUnanswered = 0;
+var numUnanswered = 5;
 
 
 
@@ -121,8 +121,21 @@ function decrement(){
 function stopTimer() {
     //clears intervalId
     clearInterval(intervalId);
-    //empties the timer div to clear the page
+    //empties all question and answer div to clear the page
     $("#timer").empty();
+    $("#questioncounter").empty();
+    $("#question,#answerone,#answertwo,#answerthree,#answerfour,#answervive").remove();
+    $("#correct").html(numCorrect);
+    $("#incorrect").html(numIncorrect);
+    $("#unanswered").html(numUnanswered);
+    
+    //create the 'play again' button
+    $("#questioncounter").html("<button id='playagain' class='btn btn-primary start-btn' type='submit'>Ready to play again?</button>")
+
+    $("#playagain").on('click', function(){
+        console.log('test')
+        init();
+    })
 }
 
 // function question and answers from a question object
@@ -137,17 +150,27 @@ function createQuestion(){
             //populate the number of correct and incorrect answers
             $("#correct").html(numCorrect);
             $("#incorrect").html(numIncorrect);
+            $("#unanswered").html(numUnanswered);
+
 
             //create the 'play again' button
-            $("#questioncounter").html("<button class='btn btn-primary start-btn' type='submit'>Ready to play again?</button>")
+            $("#questioncounter").html("<button id='playagain' class='btn btn-primary start-btn' type='submit'>Ready to play again?</button>")
+
+            //restart the game after clicking 'play again' button
+            $("#playagain").on('click', function(){
+                console.log('test')
+                init();
+            })
 
             //add the correct answers
             $("#question").html("The correct answers are: ").addClass('finalanswers');
-            $("#answerone").html("1: "+questionOne.correctAnswer).addClass('finalanswers');
-            $("#answertwo").html("2: "+questionTwo.correctAnswer).addClass('finalanswers');
-            $("#answerthree").html("3: "+questionThree.correctAnswer).addClass('finalanswers');
-            $("#answerfour").html("4: "+questionFour.correctAnswer).addClass('finalanswers');
-            $("#answerfive").html("5: "+questionFive.correctAnswer).addClass('finalanswers');
+            $("#correctanswerone").html("1: " + questionOne.question + " " + questionOne.correctAnswer).addClass('finalanswers');
+            $("#correctanswertwo").html("2: " + questionTwo.question +" " +questionTwo.correctAnswer).addClass('finalanswers');
+            $("#correctanswerthree").html("3: " + questionThree.question + " " +questionThree.correctAnswer).addClass('finalanswers');
+            $("#correctanswerfour").html("4: " + questionFour.question + " " +questionFour.correctAnswer).addClass('finalanswers');
+            $("#correctanswerfive").html("5: " + questionFive.question +" " +questionFive.correctAnswer).addClass('finalanswers');
+
+            
         }
         else{
             //populate the question for each question object
@@ -176,6 +199,9 @@ function checkAnswer(){
             numIncorrect++;
             console.log("numIncorrect: " + numIncorrect);
         }
+        //
+        numUnanswered--;
+        console.log("numUnanswered: " + numUnanswered);
         // increase the count variable to move to next question when createQuestion function is called
         count++
         createQuestion();
